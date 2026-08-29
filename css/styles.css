@@ -867,6 +867,86 @@ footer {
     }
 }
 
+/* HERO NAME — letter reveal on load */
+.split-chars {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.split-chars .char {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    animation: charIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes charIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .split-chars .char {
+        animation: none;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+/* CUSTOM CURSOR */
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+}
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    transition: opacity 0.2s;
+}
+
+.cursor-ring {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--accent);
+    opacity: 0.5;
+    transition: width 0.25s ease, height 0.25s ease, opacity 0.2s ease, background 0.25s ease;
+}
+
+.cursor-ring.cursor-hover {
+    width: 54px;
+    height: 54px;
+    background: rgba(200, 82, 26, 0.08);
+}
+
+body.cursor-active {
+    cursor: none;
+}
+
+body.cursor-active a,
+body.cursor-active button {
+    cursor: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
     #hero {
