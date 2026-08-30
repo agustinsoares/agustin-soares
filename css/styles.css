@@ -65,24 +65,83 @@ nav.scrolled {
     width: auto;
 }
 
-.nav-links {
+/* NAV TOGGLE (hamburger) */
+.nav-toggle {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 210;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.nav-links {
+    position: absolute;
+    top: 100%;
+    right: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
     list-style: none;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.nav-links.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .nav-links a {
+    display: block;
+    padding: 0.55rem 1rem;
+    border-radius: 4px;
     font-size: 0.82rem;
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--ink-muted);
     text-decoration: none;
-    transition: color 0.2s;
+    white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
 }
 
 .nav-links a:hover {
     color: var(--accent);
+    background: var(--accent-light);
 }
 
 /* HERO */
@@ -465,8 +524,13 @@ section {
 .edu-card.highlight {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.edu-card.highlight .edu-desc {
+    margin: 0;
 }
 
 .edu-flag {
@@ -848,22 +912,104 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* FADE IN */
+/* FADE IN — directional slide to final position */
 .fade-in {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.fade-in[data-dir="up"],
+.fade-in:not([data-dir]) {
+    transform: translateY(48px);
+}
+
+.fade-in[data-dir="left"] {
+    transform: translateX(-64px);
+}
+
+.fade-in[data-dir="right"] {
+    transform: translateX(64px);
 }
 
 .fade-in.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
     .fade-in {
         opacity: 1;
         transform: none;
+        transition: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .fade-in[data-dir="left"],
+    .fade-in[data-dir="right"] {
+        transform: translateY(32px);
+    }
+}
+
+/* LOADER */
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.loader.loader-done {
+    transform: translateY(-100%);
+}
+
+.loader-count {
+    display: flex;
+    align-items: flex-start;
+    font-family: var(--serif);
+    color: var(--white);
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.loader-percent {
+    font-family: var(--sans);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 0.6rem;
+    margin-left: 0.2rem;
+}
+
+.loader-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.loader-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--accent);
+}
+
+body.is-loading {
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loader {
+        display: none;
     }
 }
 
@@ -1009,10 +1155,6 @@ body.cursor-active button {
     }
 
     .nav-links {
-        gap: 1rem;
-    }
-
-    .nav-links a {
-        font-size: 0.75rem;
+        right: 1.5rem;
     }
 }

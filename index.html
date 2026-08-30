@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agustín Soares — Developer</title>
-  <meta name="description" content="Agustín Soares — Back-End Developer based in Valencia, Spain. Multimedia Engineering student with experience in Python, FastAPI, PostgreSQL and cloud infrastructure." />
+  <meta name="description" content="Agustín Soares — Backend Software Engineer based in Valencia, Spain, relocating to Bergen, Norway. Python/FastAPI, Java/Spring Boot, full-stack and cloud applications." />
 
   <link rel="icon" type="image/svg+xml" href="svg/logo_agus.svg" />
 
   <!-- Open Graph / social preview -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Agustín Soares — Developer" />
-  <meta property="og:description" content="Back-End Developer based in Valencia, Spain. Multimedia Engineering student with experience in Python, FastAPI, PostgreSQL and cloud infrastructure." />
+  <meta property="og:description" content="Backend Software Engineer — Python/FastAPI & Java/Spring Boot, full-stack, cloud applications." />
   <meta property="og:image" content="img/photo.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Agustín Soares — Developer" />
-  <meta name="twitter:description" content="Back-End Developer based in Valencia, Spain. Multimedia Engineering student." />
+  <meta name="twitter:description" content="Backend Software Engineer — Python/FastAPI & Java/Spring Boot, full-stack, cloud applications." />
   <meta name="twitter:image" content="img/photo.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,11 +25,20 @@
 </head>
 <body>
 
+  <!-- LOADER -->
+  <div id="loader" class="loader">
+    <div class="loader-count"><span id="loaderNum">0</span><span class="loader-percent">%</span></div>
+    <div class="loader-bar"><div class="loader-bar-fill" id="loaderBarFill"></div></div>
+  </div>
+
   <nav id="navbar">
     <a href="#hero" class="nav-logo">
       <img src="svg/logo_agus.svg" alt="Agustín Soares" />
     </a>
-    <ul class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navMenu">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
@@ -67,19 +76,21 @@
     <div class="section-inner">
       <div class="section-label">About me</div>
       <h2 class="section-title">Builder at heart,<br /><em class="section-title-em">curious by nature.</em></h2>
-      <div class="about-grid fade-in">
-        <div class="about-text">
+      <div class="about-grid">
+        <div class="about-text fade-in" data-dir="left">
           <p>I'm a <strong>Multimedia Engineering student</strong> at the University of Valencia, currently working as a Junior Back-End Developer at RELP — a renewable energy organisation operating across the whole world.</p>
           <p>My background sits at the intersection of engineering and creative technology. I care about building things that are <strong>well-structured, maintainable, and genuinely useful</strong> — whether that's an API, an internal tool, or a web platform.</p>
+          <p>I also completed a <strong>Full Stack internship at Capgemini</strong> in Valencia, building frontend components with Angular and Angular Material integrated with Spring Boot REST APIs for business-critical enterprise applications.</p>
           <p>I spent a year in Bergen, Norway on an <strong>Erasmus exchange</strong>, studying master-level subjects including Machine Learning, Software Security, Web Science, Data Visualization, and Human-Computer Interaction — which broadened my perspective considerably.</p>
-          <p>I adapt quickly, communicate clearly in Spanish and English, and enjoy working in environments where I can keep learning.</p>
+          <p>I adapt quickly, communicate clearly in Spanish and English, and enjoy working in environments where I can keep learning. I'm an <strong>EU citizen currently relocating to Bergen, Norway</strong>.</p>
         </div>
-        <div class="about-aside">
+        <div class="about-aside fade-in" data-dir="right">
           <div class="aside-item"><div class="aside-item-label">Role</div><div class="aside-item-value">Junior Back-End Developer</div></div>
           <div class="aside-item"><div class="aside-item-label">Company</div><div class="aside-item-value">RELP — Renewable Energy</div></div>
           <div class="aside-item"><div class="aside-item-label">Degree</div><div class="aside-item-value">Multimedia Engineering (in progress)</div></div>
           <div class="aside-item"><div class="aside-item-label">Location</div><div class="aside-item-value">Valencia · Spain</div></div>
-          <div class="aside-item"><div class="aside-item-label">Languages</div><div class="aside-item-value">Spanish (native) · English (C1)</div></div>
+          <div class="aside-item"><div class="aside-item-label">Relocating to</div><div class="aside-item-value">Bergen · Norway</div></div>
+          <div class="aside-item"><div class="aside-item-label">Languages</div><div class="aside-item-value">Spanish (native) · English (C1) · Norwegian (A1/A2)</div></div>
         </div>
       </div>
     </div>
@@ -91,25 +102,34 @@
       <div class="section-label">Experience</div>
       <h2 class="section-title">Where I've worked.</h2>
       <div class="exp-list">
-        <div class="exp-item fade-in">
+        <div class="exp-item fade-in" data-dir="left">
           <div>
-            <div class="exp-date">Jan 2025 — Present</div>
+            <div class="exp-date">Jan 2026 — Present</div>
             <div class="exp-current">Current</div>
           </div>
           <div>
             <div class="exp-role">Junior Back-End Developer</div>
             <div class="exp-company">RELP · Renewable Energy Latin Partners</div>
-            <p class="exp-desc">Part of the back-end engineering team, developing an internal HR service from the ground up. Responsible for core feature development, QA testing, and maintaining code quality across the codebase.</p>
-            <div class="exp-tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">QA Testing</span></div>
+            <p class="exp-desc">Architected and built an HR management microservice (FastAPI + PostgreSQL + SQLAlchemy) with a role-based request approval workflow and an RBAC system (JWT + Auth0) across three permission levels: Collaborator, Supervisor, and HR. Built CI/CD pipelines with GitHub Actions (quality gates, pre-commit hooks) and containerized services with Docker for consistent deployment.</p>
+            <div class="exp-tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">JWT / Auth0</span><span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">GitHub Actions</span><span class="tag">QA Testing</span></div>
           </div>
         </div>
-        <div class="exp-item fade-in">
-          <div><div class="exp-date">Nov 2023 — Dec 2024</div></div>
+        <div class="exp-item fade-in" data-dir="left">
+          <div><div class="exp-date">Feb 2026 — Jun 2026</div></div>
+          <div>
+            <div class="exp-role">Junior Full Stack Developer — Internship</div>
+            <div class="exp-company">Capgemini · Valencia, Spain</div>
+            <p class="exp-desc">Built frontend components with Angular and Angular Material, integrated with Spring Boot REST APIs for business-critical enterprise applications. Implemented pagination logic on the frontend connected to Spring Boot endpoints, improving handling of large data sets.</p>
+            <div class="exp-tags"><span class="tag">Angular</span><span class="tag">Angular Material</span><span class="tag">Spring Boot</span><span class="tag">REST APIs</span></div>
+          </div>
+        </div>
+        <div class="exp-item fade-in" data-dir="left">
+          <div><div class="exp-date">Nov 2023 — Dec 2025</div></div>
           <div>
             <div class="exp-role">IT HR Intern</div>
             <div class="exp-company">RELP · Software &amp; Content Focus</div>
-            <p class="exp-desc">Designed and developed a website for internal organisational use. Managed updates and improvements, handled digital content including articles, videos, podcasts, and presentations. Supported both the HR and communications teams.</p>
-            <div class="exp-tags"><span class="tag">Web Development</span><span class="tag">Content Management</span><span class="tag">HTML / CSS</span><span class="tag">Communications</span></div>
+            <p class="exp-desc">Designed and developed a website for internal organisational use. Managed updates and improvements, handled digital content including articles, videos, podcasts, and presentations. Supported both the HR and communications teams. Coordinated calendars, documents and events for teams distributed across multiple time zones.</p>
+            <div class="exp-tags"><span class="tag">Web Development</span><span class="tag">Content Management</span><span class="tag">HTML / CSS</span><span class="tag">Communications</span><span class="tag">Google Workspace</span></div>
           </div>
         </div>
       </div>
@@ -122,23 +142,23 @@
       <div class="section-label">Education</div>
       <h2 class="section-title">Academic background.</h2>
       <div class="edu-grid">
-        <div class="edu-card highlight fade-in">
+        <div class="edu-card highlight fade-in" data-dir="up">
           <div>
             <div class="edu-flag">🇪🇸</div>
-            <div class="edu-degree">Multimedia Engineering Degree</div>
-            <div class="edu-school">University of Valencia</div>
+            <div class="edu-degree">B.Eng. in Multimedia Engineering</div>
+            <div class="edu-school">University of Valencia — ETSE</div>
             <div class="edu-years">Sep 2021 — Jun 2026 (expected)</div>
-            <div class="edu-desc">Combines computer science, programming, design, interactive systems, digital content, and emerging technologies. Focused on building innovative solutions at the intersection of engineering and creative digital environments.</div>
           </div>
-          <div>
-            <div class="edu-flag">🇳🇴</div>
-            <div class="edu-degree">Erasmus Mobility Programme</div>
-            <div class="edu-school">University of Bergen</div>
-            <div class="edu-years">Sep 2024 — Jun 2025</div>
-            <div class="edu-desc">Master's level courses entirely in English. Covered Software Security, Data Visualisation, Web Science, Machine Learning, and Human-Computer Interaction.</div>
-          </div>
+          <div class="edu-desc">Combines computer science, programming, design, interactive systems, digital content, and emerging technologies. Focused on building innovative solutions at the intersection of engineering and creative digital environments.</div>
         </div>
-        <div class="edu-card fade-in">
+        <div class="edu-card fade-in" data-dir="left">
+          <div class="edu-flag">🇳🇴</div>
+          <div class="edu-degree">Erasmus+ · Master-level Coursework</div>
+          <div class="edu-school">University of Bergen</div>
+          <div class="edu-years">Sep 2024 — Jun 2025</div>
+          <div class="edu-desc">Master's level courses entirely in English. Covered Software Security, Data Visualisation, Web Science, Machine Learning, and Human-Computer Interaction.</div>
+        </div>
+        <div class="edu-card fade-in" data-dir="right">
           <div class="edu-flag">🇦🇷</div>
           <div class="edu-degree">International Baccalaureate</div>
           <div class="edu-school">Buenos Aires, Argentina</div>
@@ -155,12 +175,12 @@
       <div class="section-label">Skills</div>
       <h2 class="section-title">What I work with.</h2>
       <div class="skills-grid">
-        <div class="fade-in"><div class="skill-group-title">Back-End</div><ul class="skill-list"><li>Python</li><li>FastAPI</li><li>Node.js</li><li>TypeScript</li><li>REST APIs</li></ul></div>
-        <div class="fade-in"><div class="skill-group-title">Front-End</div><ul class="skill-list"><li>HTML5 / CSS3</li><li>JavaScript</li><li>TailwindCSS</li></ul></div>
-        <div class="fade-in"><div class="skill-group-title">Data &amp; Infra</div><ul class="skill-list"><li>PostgreSQL</li><li>MySQL</li><li>Git / GitHub</li><li>Vercel</li></ul></div>
-        <div class="fade-in"><div class="skill-group-title">Tooling</div><ul class="skill-list"><li>Google Workspace</li><li>Microsoft 365</li><li>QA &amp; Testing</li></ul></div>
-        <div class="fade-in"><div class="skill-group-title">Soft Skills</div><ul class="skill-list"><li>Effective communication</li><li>Fast learner</li><li>Teamwork</li><li>Adaptability</li></ul></div>
-        <div class="fade-in"><div class="skill-group-title">Languages</div><ul class="skill-list"><li>Spanish — Native</li><li>English — C1 Cambridge</li></ul></div>
+        <div class="fade-in" data-dir="up"><div class="skill-group-title">Back-End</div><ul class="skill-list"><li>Python</li><li>FastAPI</li><li>Spring Boot</li><li>Node.js</li><li>TypeScript</li><li>REST APIs</li><li>SQLAlchemy</li><li>JWT / Auth0</li></ul></div>
+        <div class="fade-in" data-dir="up"><div class="skill-group-title">Front-End</div><ul class="skill-list"><li>Angular</li><li>React</li><li>Next.js</li><li>HTML5 / CSS3</li><li>JavaScript</li><li>TailwindCSS</li></ul></div>
+        <div class="fade-in" data-dir="up"><div class="skill-group-title">Data &amp; Infra</div><ul class="skill-list"><li>PostgreSQL</li><li>MySQL</li><li>Git / GitHub</li><li>Vercel</li><li>AWS</li><li>CI/CD</li><li>GitHub Actions</li><li>Docker</li></ul></div>
+        <div class="fade-in" data-dir="up"><div class="skill-group-title">Tooling</div><ul class="skill-list"><li>Google Workspace</li><li>Microsoft 365</li><li>QA &amp; Testing</li><li>Postman</li><li>Pytest</li></ul></div>
+        <div class="fade-in" data-dir="up"><div class="skill-group-title">Soft Skills</div><ul class="skill-list"><li>Effective communication</li><li>Fast learner</li><li>Teamwork</li><li>Adaptability</li></ul></div>
+        <div class="fade-in" data-dir="up"><div class="skill-group-title">Languages</div><ul class="skill-list"><li>Spanish — Native</li><li>English — C1 Cambridge</li><li>Norwegian — A1/A2 (in progress)</li></ul></div>
       </div>
     </div>
   </section>
@@ -172,18 +192,29 @@
       <h2 class="section-title">Things I've built.</h2>
       <div class="projects-grid">
 
-        <div class="project-card fade-in">
+        <div class="project-card fade-in" data-dir="up">
           <div class="project-header">
             <div class="project-name">Chocolate Spain</div>
             <a href="https://chocolate-spain.vercel.app/" class="project-link" target="_blank" rel="noopener">Visit ↗</a>
           </div>
           <div class="project-body">
-            <p class="project-desc">Online presence for a pastry business based in Spain. Built and deployed on Vercel, focused on clean presentation and local SEO for Spanish customers.</p>
-            <div class="project-tags"><span class="tag">HTML / CSS</span><span class="tag">JavaScript</span><span class="tag">Vercel</span></div>
+            <p class="project-desc">Production e-commerce app for a pastry business based in Spain, with Stripe checkout, order management, and a role-based admin panel (Supabase auth + protected routes). Focused on clean presentation and local SEO for Spanish customers.</p>
+            <div class="project-tags"><span class="tag">React / TypeScript</span><span class="tag">Supabase</span><span class="tag">Stripe</span><span class="tag">HTML / CSS</span><span class="tag">JavaScript</span><span class="tag">Vercel</span></div>
           </div>
         </div>
 
-        <div class="project-card coming-soon fade-in">
+        <div class="project-card fade-in" data-dir="up">
+          <div class="project-header">
+            <div class="project-name">Levitere Studio</div>
+            <a href="https://levitere.vercel.app/" class="project-link" target="_blank" rel="noopener">Visit ↗</a>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">Website for a film production studio, built with Astro and Tailwind CSS and deployed on Vercel.</p>
+            <div class="project-tags"><span class="tag">Astro</span><span class="tag">Tailwind CSS</span><span class="tag">Vercel</span></div>
+          </div>
+        </div>
+
+        <div class="project-card coming-soon fade-in" data-dir="up">
           <div class="project-header">
             <div class="project-name">Personal Portfolio</div>
             <span class="coming-badge">In progress</span>
@@ -194,7 +225,7 @@
           </div>
         </div>
 
-        <div class="project-card coming-soon fade-in">
+        <div class="project-card coming-soon fade-in" data-dir="up">
           <div class="project-header">
             <div class="project-name">HR Internal Tool</div>
             <span class="coming-badge">In progress</span>
@@ -205,7 +236,7 @@
           </div>
         </div>
 
-        <div class="project-card coming-soon fade-in">
+        <div class="project-card coming-soon fade-in" data-dir="up">
           <div class="project-header">
             <div class="project-name">More coming soon</div>
             <span class="coming-badge">In progress</span>
@@ -226,19 +257,19 @@
       <h2 class="section-title">Courses &amp; credentials.</h2>
       <div class="certs-grid">
 
-        <div class="cert-card fade-in">
+        <div class="cert-card fade-in" data-dir="up">
           <div class="cert-issuer">University of Cambridge</div>
           <div class="cert-name">Cambridge English Advanced (CAE) — C1</div>
           <div class="cert-date">2024</div>
           <a href="#" class="cert-link">View credential ↗</a>
         </div>
 
-        <div class="cert-card placeholder fade-in">
+        <div class="cert-card placeholder fade-in" data-dir="up">
           <div class="cert-issuer">—</div>
           <div class="cert-placeholder-text">More certifications coming soon</div>
         </div>
 
-        <div class="cert-card placeholder fade-in">
+        <div class="cert-card placeholder fade-in" data-dir="up">
           <div class="cert-issuer">—</div>
           <div class="cert-placeholder-text">Add your next course here</div>
         </div>
@@ -253,9 +284,9 @@
       <div class="section-label">Achievements</div>
       <h2 class="section-title">Milestones.</h2>
       <div class="ach-list">
-        <div class="ach-item fade-in"><div class="ach-icon">🏅</div><div><div class="ach-title">Cambridge English Advanced (CAE) — C1</div><div class="ach-detail">University of Cambridge · 2024</div></div></div>
-        <div class="ach-item fade-in"><div class="ach-icon">🌍</div><div><div class="ach-title">Erasmus Exchange — University of Bergen, Norway</div><div class="ach-detail">Master's level coursework in English · 2024–2025</div></div></div>
-        <div class="ach-item fade-in"><div class="ach-icon">📜</div><div><div class="ach-title">International Baccalaureate Diploma</div><div class="ach-detail">Buenos Aires, Argentina · 2020</div></div></div>
+        <div class="ach-item fade-in" data-dir="left"><div class="ach-icon">🏅</div><div><div class="ach-title">Cambridge English Advanced (CAE) — C1</div><div class="ach-detail">University of Cambridge · 2024</div></div></div>
+        <div class="ach-item fade-in" data-dir="left"><div class="ach-icon">🌍</div><div><div class="ach-title">Erasmus Exchange — University of Bergen, Norway</div><div class="ach-detail">Master's level coursework in English · 2024–2025</div></div></div>
+        <div class="ach-item fade-in" data-dir="left"><div class="ach-icon">📜</div><div><div class="ach-title">International Baccalaureate Diploma</div><div class="ach-detail">Buenos Aires, Argentina · 2020</div></div></div>
       </div>
     </div>
   </section>
@@ -265,11 +296,11 @@
     <div class="section-inner">
       <div class="section-label">Contact</div>
       <h2 class="section-title">Let's talk.</h2>
-      <div class="contact-grid fade-in">
-        <div class="contact-text">
+      <div class="contact-grid">
+        <div class="contact-text fade-in" data-dir="left">
           I'm open to back-end, full-stack, and cloud-related roles — as well as internships or freelance projects. If you think there's a fit, I'd love to hear from you.
         </div>
-        <div class="contact-links">
+        <div class="contact-links fade-in" data-dir="right">
           <a href="mailto:agustin.m.soares@gmail.com" class="contact-link"><span class="contact-link-icon">✉️</span><div><div>agustin.m.soares@gmail.com</div><div class="contact-link-label">Email</div></div></a>
           <a href="https://www.linkedin.com/in/agustinsoares/" target="_blank" rel="noopener" class="contact-link"><span class="contact-link-icon">💼</span><div><div>linkedin.com/in/agustinsoares</div><div class="contact-link-label">LinkedIn</div></div></a>
           <a href="https://agustinsoares.github.io/" target="_blank" rel="noopener" class="contact-link"><span class="contact-link-icon">🐙</span><div><div>agustinsoares.github.io</div><div class="contact-link-label">GitHub Pages</div></div></a>
@@ -287,7 +318,6 @@
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
