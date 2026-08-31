@@ -718,6 +718,18 @@ section {
     white-space: nowrap;
 }
 
+.done-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
 /* CERTIFICATIONS */
 #certifications {
     background: var(--bg);
